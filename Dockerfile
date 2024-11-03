@@ -1,24 +1,15 @@
-# Use the official Python 3.11 image
 FROM python:3.11
 
-# Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copy requirements.txt to the working directory
-COPY requirements.txt .
+COPY requirements.txt ./
 
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the templates folder and main app file
-COPY ./templates ./templates
-COPY app.py .
+COPY ./templates .
 
-# Expose the port the app runs on
+COPY ./app.py .
+
 EXPOSE 5000
 
-# Set environment variables to make Python output unbuffered
-ENV PYTHONUNBUFFERED=1
-
-# Run the application
-CMD ["python", "app.py"]
+CMD [ "python", "./app.py" ]
