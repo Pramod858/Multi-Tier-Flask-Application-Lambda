@@ -11,8 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the templates folder and main app file
-COPY ./templates ./templates
-COPY app.py .
+COPY . .
 
 # Expose the port the app runs on
 EXPOSE 5000
