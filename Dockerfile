@@ -17,8 +17,5 @@ COPY app.py .
 # Expose the port the app runs on
 EXPOSE 5000
 
-# Set environment variables to make Python output unbuffered
-ENV PYTHONUNBUFFERED=1
-
 # Run the application
 CMD ["python", "app.py"]
