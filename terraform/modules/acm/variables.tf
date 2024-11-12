@@ -5,3 +5,7 @@ variable "domain_name" {
 variable "my_domain_name" {
     type = string
 }
+
+variable "custom_domain_name" {
+    type = string
+}
