@@ -110,6 +110,4 @@ module "api-gateway" {
     environment                = var.environment
     lambda_function_invoke_arn = module.lambda.lambda_function_invoke_arn
     lambda_function_name       = module.lambda.lambda_function_name
-    custom_domain_cert_arn     = module.acm.custom_domain_cert_arn
-    custom_domain_name         = var.custom_domain_name
 }
