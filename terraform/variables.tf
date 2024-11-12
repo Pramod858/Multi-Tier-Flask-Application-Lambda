@@ -49,6 +49,12 @@ variable "my_domain_name" {
     default = "app.pramodpro.xyz"
 }
 
+# Api gateway custom domain name
+variable "custom_domain_name" {
+    type = string
+    default = "api.pramodpro.xyz"
+}
+
 variable "source_bucket" {
     type = string
     default = "pramodoriginal"

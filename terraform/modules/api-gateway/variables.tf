@@ -14,3 +14,11 @@ variable "lambda_function_invoke_arn" {
 variable "lambda_function_name" {
     type = string
 }
+
+variable "custom_domain_name" {
+    type = string
+}
+
+variable "acm_certificate_arn" {
+    type = string
+}
