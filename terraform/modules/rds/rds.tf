@@ -36,7 +36,7 @@ resource "aws_rds_cluster" "db_cluster" {
 
 # RDS Cluster Instance
 resource "aws_rds_cluster_instance" "rds_cluster_instance" {
-    identifier           = "rds_aurora_cluster_instance"
+    identifier           = "rds-aurora-cluster-instance"
     cluster_identifier   = aws_rds_cluster.db_cluster.id
     engine               = "aurora-mysql"
     engine_version       = "8.0"
