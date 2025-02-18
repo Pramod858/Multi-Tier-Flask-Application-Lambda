@@ -10,7 +10,7 @@ resource "aws_db_subnet_group" "rds_subnet" {
 resource "aws_rds_cluster" "db_cluster" {
     cluster_identifier      = "${var.environment}-db-cluster"
     engine                  = "aurora-mysql"
-    engine_version          = "5.7.mysql_aurora.2.11.2"
+    engine_version	    = "8.0.mysql_aurora.3.04.0"
     port                    = "3306"
     database_name           = var.db_name
     master_username         = var.db_username
