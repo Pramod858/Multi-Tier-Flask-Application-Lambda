@@ -38,6 +38,8 @@ resource "aws_rds_cluster" "db_cluster" {
 resource "aws_rds_cluster_instance" "rds_cluster_instance" {
     identifier           = "rds_aurora_cluster_instance"
     cluster_identifier   = aws_rds_cluster.db_cluster.id
+    engine               = "aurora-mysql"
+    engine_version       = "8.0"
     instance_class       = "db.t3.medium"
     db_subnet_group_name = aws_db_subnet_group.rds_subnet.name
     depends_on           = [aws_rds_cluster.db_cluster]
