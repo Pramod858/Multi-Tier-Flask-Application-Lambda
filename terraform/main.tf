@@ -78,7 +78,7 @@ module "ec2" {
     vpc_id                     = module.vpc.vpc_id
     public_subnet_1_id         = module.vpc.public_subnet_1_id
     public_subnet_2_id         = module.vpc.public_subnet_2_id
-    bastion_security_group_id  = module.vpc.bastion_secuity_group_id
+    bastion_security_group_id  = module.vpc.bastion_security_group_id
     key_name                   = var.key_name
 }
 

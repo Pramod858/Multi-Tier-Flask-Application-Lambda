@@ -14,8 +14,8 @@ output "db_security_group_id" {
     value = aws_security_group.database_sg.id
 }
 
-output "bastion_secuity_group_id" {
-    value = aws_security_group.bastion_secuity_group.id
+output "bastion_security_group_id" {
+    value = aws_security_group.bastion_security_group.id
 }
 
 output "public_subnet_1_id" {
