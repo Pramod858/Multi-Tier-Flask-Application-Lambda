@@ -45,7 +45,7 @@ resource "aws_security_group" "ecs_sg" {
         from_port   = 22
         to_port     = 22
         protocol    = "tcp"
-        security_groups = [aws_security_group.bastion_secuity_group.id]
+        security_groups = [aws_security_group.bastion_security_group.id]
     }
 
     egress {
@@ -55,13 +55,14 @@ resource "aws_security_group" "ecs_sg" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 
-    depends_on = [ aws_security_group.alb_sg, aws_security_group.bastion_secuity_group ]
+    depends_on = [ aws_security_group.alb_sg, aws_security_group.bastion_security_group ]
 
     tags = {
         Name = "${var.environment}-ecs-security-group"
     }
 }
 
+# Create a security group for RDS (Database)
 resource "aws_security_group" "database_sg" {
     name_prefix = "${var.environment}-database-sg"
     vpc_id      = aws_vpc.vpc.id
@@ -77,7 +78,7 @@ resource "aws_security_group" "database_sg" {
         from_port       = 3306
         to_port         = 3306
         protocol        = "tcp"
-        security_groups = [aws_security_group.bastion_secuity_group.id]
+        security_groups = [aws_security_group.bastion_security_group.id]  # Fixed typo here
     }
 
     egress {
@@ -88,14 +89,15 @@ resource "aws_security_group" "database_sg" {
         ipv6_cidr_blocks = ["::/0"]
     }
 
-    depends_on = [ aws_security_group.ecs_sg, aws_security_group.bastion_secuity_group ]
+    depends_on = [ aws_security_group.ecs_sg, aws_security_group.bastion_security_group ]
 
     tags = {
         Name = "${var.environment}-database-sg"
     }
 }
 
-resource "aws_security_group" "bastion_secuity_group" {
+# Create a security group for the Bastion Host
+resource "aws_security_group" "bastion_security_group" {  # Fixed typo here
     name = "${var.environment}-bastion-security-group"
     vpc_id = aws_vpc.vpc.id
 
@@ -103,7 +105,7 @@ resource "aws_security_group" "bastion_secuity_group" {
         from_port   = 22
         to_port     = 22
         protocol    = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        cidr_blocks = ["0.0.0.0/0"]  # Allow SSH access from anywhere
     }
 
     egress {
