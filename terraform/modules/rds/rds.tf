@@ -12,7 +12,7 @@ resource "aws_db_subnet_group" "rds_subnet" {
 resource "aws_rds_cluster" "db_cluster" {
     cluster_identifier      = "${var.environment}-db-cluster"
     engine                  = "aurora-mysql"
-    engine_version          = "8.0"  # Ensure this is a valid version for aurora-mysql
+    engine_version          = "8.0.mysql_aurora.3.08.0"  # Ensure this is a valid version for aurora-mysql
     port                    = 3306
     database_name           = var.db_name
     master_username         = var.db_username
@@ -39,7 +39,7 @@ resource "aws_rds_cluster_instance" "rds_cluster_instance" {
     identifier           = "rds-aurora-cluster-instance"
     cluster_identifier   = aws_rds_cluster.db_cluster.id
     engine               = "aurora-mysql"
-    engine_version       = "8.0"
+    engine_version       = "8.0.mysql_aurora.3.08.0"
     instance_class       = "db.t3.medium"
     db_subnet_group_name = aws_db_subnet_group.rds_subnet.name
     depends_on           = [aws_rds_cluster.db_cluster]
