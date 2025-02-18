@@ -16,15 +16,14 @@ resource "aws_rds_cluster" "db_cluster" {
     master_username         = var.db_username
     master_password         = var.db_password
 	backtrack_window        = 0
-    enable_http_endpoint    = true
     skip_final_snapshot     = true
     db_subnet_group_name    = aws_db_subnet_group.rds_subnet.name
     availability_zones      = ["${var.region}a", "${var.region}b"]
     vpc_security_group_ids  = [var.db_security_group_id]
 
     serverlessv2_scaling_configuration {
-        min_capacity = 1
-        max_capacity = 2
+        min_capacity = 2
+        max_capacity = 4
     }
 
     backup_retention_period = 0
